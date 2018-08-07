@@ -145,6 +145,24 @@ func testAccCheckAWSAPIGatewayResourceDestroy(s *terraform.State) error {
 	return nil
 }
 
+func testAccCheckAWSAPIGatewayResourceImport(t *testing.T) {
+	resourceName := "aws_api_gateway_resource.test"
+	resource.Test(t, resource.TestCase{
+		PreCheck:  func() { testAccPreCheck(t) },
+		Providers: testAccProviders,
+		Steps: []resource.TestStep{
+			resource.TestStep{
+				Config: testAccAWSAPIGatewayResourceConfig(),
+			},
+			resource.TestStep{
+				ResourceName:      resourceName,
+				ImportState:       true,
+				ImportStateVerify: true,
+			},
+		},
+	})
+}
+
 const testAccAWSAPIGatewayResourceConfig = `
 resource "aws_api_gateway_rest_api" "test" {
   name = "test"

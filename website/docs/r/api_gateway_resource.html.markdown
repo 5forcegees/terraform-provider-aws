@@ -39,3 +39,10 @@ In addition to all arguments above, the following attributes are exported:
 
 * `id` - The resource's identifier.
 * `path` - The complete path for this API resource, including all parent paths.
+
+
+## Import
+API Gateway Resource can be imported using the `id`, e.g.
+```
+$ terraform import aws_api_gateway_resource.example <resource_id>
+``

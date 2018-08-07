@@ -18,6 +18,9 @@ func resourceAwsApiGatewayResource() *schema.Resource {
 		Read:   resourceAwsApiGatewayResourceRead,
 		Update: resourceAwsApiGatewayResourceUpdate,
 		Delete: resourceAwsApiGatewayResourceDelete,
+		Importer: &schema.ResourceImporter{
+			State: schema.ImportStatePassthrough,
+		},
 
 		Schema: map[string]*schema.Schema{
 			"rest_api_id": &schema.Schema{
